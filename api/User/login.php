@@ -38,4 +38,6 @@ else{
 }
 // make it json format
 print_r(json_encode($user_arr));
+
+echo '<a href="../../mainpage.html">Enter the mainpage</a>';
 ?>
