@@ -29,15 +29,17 @@ if($stmt->rowCount() > 0){
         "id" => $row['id'],
         "username" => $row['username']
     );
+    echo '<a href="../../index.php">Enter the mainpage</a>';
 }
 else{
     $user_arr=array(
         "status" => false,
         "message" => "Invalid Username or Password!",
     );
+    echo '<a href="../../login.html">Return to login page</a>';
 }
 // make it json format
 print_r(json_encode($user_arr));
 
-echo '<a href="../../index.php">Enter the mainpage</a>';
+
 ?>
