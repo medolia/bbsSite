@@ -42,7 +42,7 @@ class User{
     
         // execute 'prepared' query, return TRUE on success
         if($stmt->execute()){
-            // lastInsertId() return the line num of the inserted row
+            // lastInsertId() return the row num of the inserted row
             $this->id = $this->conn->lastInsertId();
             return true;
         }

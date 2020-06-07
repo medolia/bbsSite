@@ -6,6 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>WUhu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</h1>
+    <h1>Que's Initial Blog</h1>
+    <hr>
+    <div class="content">
+
+        <?php echo $content; ?>
+        
+    </div>  
+    
 </body>
 </html>
