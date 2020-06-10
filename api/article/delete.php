@@ -17,14 +17,14 @@ $article->id = $_POST["id"];
 // remove
 if($article->delete()) {
     $article_arr = array(
-        "status" = true,
-        "message" = "Successfully Removed!"
+        "status" => true,
+        "message" => "Successfully Removed!"
     );
 }
 else {
     $article_arr = array(
-        "status" = false,
-        "message" = "Cannot be deleted or it doesn't exist"
+        "status" => false,
+        "message" => "Cannot be deleted or it doesn't exist"
     );
 }
 print_r(json_encode($article_arr));

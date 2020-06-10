@@ -20,7 +20,7 @@ if($stmt->rowCount() > 0) {
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         // extract a record from PDOStatement
-        // and push it to the array in every loop
+        // ([key] => [value]) is transformed(extracted) to $[key] = [value]
         extract($row);
         $article_item=array(
             "id" => $id,

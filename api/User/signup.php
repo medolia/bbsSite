@@ -32,5 +32,6 @@ else{
     );
 }
 print_r(json_encode($user_arr));
-echo '<a href="../../login.html">Return to login page</a>';
+
+header('Location: ../../login.html');
 ?>

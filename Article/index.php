@@ -1,6 +1,6 @@
 <?php
 
-$content = '<div class="row">
+$main_content = '<div class="row">
       <div class="col-xs-12"></div>
       <div class="box">
         <div class="box-header">
@@ -10,11 +10,11 @@ $content = '<div class="row">
           <table id="articles" class="table table-borderd table-hover">
             <thead>
             <tr>
-              <th>id</th>
-              <th>user_id</th>
-              <th>headline</th>
-              <th>content</th>
-              <th>last_edited</th>
+              <th>UserID</th>
+              <th>Headline</th>
+              <th>Content</th>
+              <th>Last edited</th>
+              <th>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -26,25 +26,27 @@ $content = '<div class="row">
         </div>
       </div>
     </div>';
-include ('../mainpage.php');
+include('../mainpage.php');
 ?>
 <!-- page script -->
 <script>
     $(document).ready(function () {
         $.ajax({
+            // give 'GET' request to the server url
+            // and expect json-type data back
             type: "GET",
             url: "../api/article/read.php",
             dataType: 'json',
+            // [data] represents data back from server
             success: function (data) {
                 var response="";
                 for(var article in data) {
                     response += "<tr>"+
-                        "<td>"+data[article].id+"</td>"+
                         "<td>"+data[article].user_id+"</td>"+
                         "<td>"+data[article].headline+"</td>"+
                         "<td>"+data[article].content+"</td>"+
                         "<td>"+data[article].last_edited+"</td>"+
-                        "<td><a href='update.php?id="+data[article].id+"'>Edit</a> | <a href='#' onClick=Remove('"+data[article].id+"')>Remove</a></td>"+
+                        "<td><a href='update.php?id="+data[article].id+"'>Edit</a> | <a href='#' onClick=Remove('"+data[article].id+"')>Remove</a> | <a href='comment.php?id="+data[article].id+"' >Comment</a></td>"+
                         "</tr>";
                 }
                 $(response).appendTo($("#articles"));
@@ -58,6 +60,7 @@ include ('../mainpage.php');
                 type: "POST",
                 url: "../api/article/delete.php",
                 dataType: 'json',
+                // POST data to the url
                 data: {
                     id: id
                 },
@@ -77,4 +80,6 @@ include ('../mainpage.php');
             });
         }
     }
+
+
 </script>

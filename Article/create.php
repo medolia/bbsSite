@@ -1,29 +1,38 @@
 <?php
-$content = '<div class="box box-primary">
-      <div class="box-header">
-        <h3 class="box-title">Write an Article</h3>
-      </div>
-      <form role="form">
-        <div class="box-body">
-          <div class="form-group">
-            <label for="exampleInputID">ID</label>
-            <input type="text" id="id" class="form-control" placeholder="Enter ID">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputUserID">UserID</label>
-            <input type="text" id="user_id" class="form-control" placeholder="Enter UserID">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputHeadline">headline</label>
-            <input type="text" id="headline" class="form-control" placeholder="Enter Headline">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputContent">Content</label>
-            <textarea rows="5" cols="15" id="content" class="form-control" placeholder="content here">
-          </div>
-          </div>
-      </form>
-    </div>';
+$main_content = '<div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                  <!-- general form elements -->
+                  <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Publish an Article</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form role="form">
+                      <div class="box-body">
+                        <div class="form-group">
+                          <label for="exampleInputUserID">UserID</label>
+                          <input type="text" class="form-control" id="user_id" placeholder="Enter UserID">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputHeadline">Headline</label>
+                          <input type="text" class="form-control" id="headline" placeholder="Enter Headline">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputContent">Content</label>
+                          <input type="text" class="form-control" id="content" placeholder="Content Here">
+                        </div>
+                      </div>
+                      <!-- /.box-body -->
+                      <div class="box-footer">
+                        <input type="button" class="btn btn-primary" onClick="WriteArticle()" value="Submit"></input>
+                      </div>
+                    </form>
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>';
 include "../mainpage.php";
 ?>
 <script>
@@ -33,10 +42,10 @@ include "../mainpage.php";
             url: '../api/article/create.php',
             dataType: 'json',
             data: {
-                id: $('id').val(),
-                user_id: $('user_id').val(),
-                headline: $('headline').val(),
-                content: $('content').val()
+                // #user_id means <id="user_id">
+                user_id: $('#user_id').val(),
+                headline: $('#headline').val(),
+                content: $('#content').val()
             },
             error: function (result) {
                 alert(result.responseText);
@@ -44,7 +53,7 @@ include "../mainpage.php";
             success: function (result) {
                 if(result['status'] == true) {
                     alert("Successfully Published an Article!");
-                    window.location.href = '/testsite/article';
+                    window.location.href = '/testsite/Article';
                 }
                 else {
                     alert(result['message']);

@@ -11,19 +11,16 @@ $db = $database->getConnection();
 // prepare article object
 $article = new Article($db);
 
-//set article property values
-$article->id = $_POST['id'];
+// set article property values
 $article->user_id = $_POST['user_id'];
 $article->headline = $_POST['headline'];
 $article->content = $_POST['content'];
-$article->last_edited = $_POST['last_edited'];
 
 // create the article
 if($article->create()) {
     $article_arr=array(
         "status" => true,
         "message" => "Successfully Published!",
-        "id" => $article->id,
         "user_id" => $article->user_id,
         "headline" => $article->headline,
         "content" => $article->content

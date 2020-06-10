@@ -20,14 +20,14 @@ $article->content = $_POST["content"];
 // update
 if($article->update()) {
     $article_arr = array(
-        "status" = true,
-        "message" = "Sucessfully Updated!"
+        "status" => true,
+        "message" => "Sucessfully Updated!"
     );
 }
 else {
     $article_arr = array(
-        "status" = false,
-        "message" = "Error"
+        "status" => false,
+        "message" => "Error"
     );
 }
 print_r(json_encode($article_arr));

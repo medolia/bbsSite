@@ -68,6 +68,24 @@ class Article{
         return $stmt;
     }
 
+    function read_single() {
+
+        //select chosen record
+        $query = "SELECT
+                    *
+                FROM
+                    " . $this->table_name ."
+                WHERE
+                    id= '".$this->id."'";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+
+        //execute query
+        $stmt->execute();
+        return $stmt;
+    }
+
     function update() {
 
         // query to update record
